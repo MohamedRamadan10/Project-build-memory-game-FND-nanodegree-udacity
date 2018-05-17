@@ -29,13 +29,9 @@ let closeicon = document.querySelector(".close");
 let openedCards = [];
 
 
-// function shuffles cards
-// param {array}
-// returns shuffledarray
+// Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    let currentIndex = array.length,
-        temporaryValue,
-        randomIndex;
+    var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -46,10 +42,10 @@ function shuffle(array) {
     }
 
     return array;
-};
+}
 
 
-// function shuffles cards when page is refreshed / loads
+// function shuffles cards when page is refreshed / loaded
 document.body.onload = startGame();
 
 
@@ -110,7 +106,7 @@ function cardOpen() {
     let len = openedCards.length;
     if (len === 2) {
         moveCounter();
-        if (openedCards[0].title === openedCards[1].title) {
+        if (openedCards[0].dataset.name === openedCards[1].dataset.name) {
             matched();
         } else {
             unmatched();

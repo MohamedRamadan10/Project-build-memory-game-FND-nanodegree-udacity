@@ -22,7 +22,7 @@ Load this link in your browser http://mohamed-ramadan.comeze.com/fend-project-me
 
 ## Resources
 * https://developer.mozilla.org
-* Validate HTML and CSS http://mohamed-ramadan.comeze.com/fend-project-memory-game-master/index.html
+* Validate HTML and CSS https://validator.w3.org
 * Validate JS syntax code http://esprima.org/demo/validate.html
 * Search about solutions of problems https://stackoverflow.com 
 
