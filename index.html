@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- specifies the character encoding for the HTML document -->
+    <meta charset="utf-8">
+    <!-- Title -->
+    <title>Memory Game</title>
+    <!-- game Description -->
+    <meta name="description" content="This is a simple game built. There's a deck of cards with different icons.........etc ">
+    <!-- varies with the device, and will be smaller on a mobile phone than on a computer screen. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font awesome icons -->
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <!-- app CSS -->
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+
+    <div class="container">
+       <!-- Heading  -->
+        <header>
+            <h1>Memory Game</h1>
+        </header>
+
+        <!-- Score panel of stars, number of moves and timers -->
+        <div class="score-panel">
+           <!-- Stars icons -->
+            <ul class="stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+            </ul>
+            
+            <!-- Number of moves -->
+            <span class="moves">0</span> Move(s)
+
+            <!-- Timers -->
+            <div class="timer"></div>
+
+           <!-- Button restart the memory game (restart moves, timers and stars) -->
+            <div class="restart" onclick=startGame()>
+                <i class="fa fa-repeat"></i>
+            </div>
+        </div>
+        
+        <!-- Cards icons -->
+        <ul class="deck" id="card-deck">
+           
+            <li class="card" title="diamond">
+                <i class="fa fa-diamond"></i>
+            </li>
+            
+            <li class="card" title="plane">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            
+            <li class="card" title="anchor">
+                <i class="fa fa-anchor"></i>
+            </li>
+            
+            <li class="card" title="bolt">
+                <i class="fa fa-bolt"></i>
+            </li>
+            
+            <li class="card" title="cube">
+                <i class="fa fa-cube"></i>
+            </li>
+            
+            <li class="card" title="anchor">
+                <i class="fa fa-anchor"></i>
+            </li>
+            
+            <li class="card" title="leaf">
+                <i class="fa fa-leaf"></i>
+            </li>
+            
+            <li class="card" title="bicycle">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            
+            <li class="card" title="diamond">
+                <i class="fa fa-diamond"></i>
+            </li>
+            
+            <li class="card" title="bomb">
+                <i class="fa fa-bomb"></i>
+            </li>
+            
+            <li class="card" title="leaf">
+                <i class="fa fa-leaf"></i>
+            </li>
+            
+            <li class="card" title="bomb">
+                <i class="fa fa-bomb"></i>
+            </li>
+            
+            <li class="card" title="bolt">
+                <i class="fa fa-bolt"></i>
+            </li>
+            
+            <li class="card" title="bicycle">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            
+            <li class="card" title="plane">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            
+            <li class="card" title="cube">
+                <i class="fa fa-cube"></i>
+            </li>
+        </ul>
+        
+        <!-- Modal popup when game is finished -->
+        <div id="popup" class="overlay">
+            <div class="popup">
+                <!-- Hedaing -->
+                <h2>Congratulations</h2>
+                <!-- Cloes modal -->
+                <a class="close" href=#>×</a>
+                <!-- Content of number of moves, timers and stars -->
+                <div class="content">
+                    <p>You made <span id=finalMove> </span> moves </p>
+                    <p>in <span id=totalTime> </span> </p>
+                    <p>Rating: <span id=starRating></span></p>
+                </div>
+                <!-- Button play again -->
+                <button id="play-again" onclick="playAgain()">
+                    Play again 
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- app JS -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>
