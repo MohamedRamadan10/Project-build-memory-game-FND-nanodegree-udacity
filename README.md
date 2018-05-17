@@ -6,7 +6,7 @@ This is a simple game built. There's a deck of cards with different icons.
 Match cards in less time with less moves.
 
 ## How to Play
-Load this link in your browser http://mohamed-ramadan.comeze.com/fend-project-memory-game-master/index.html
+Load this link in your browser http://mohamed-ramadan.comeze.com/Project-build-memory-game-FND-nanodegree-udacity/index.html#
 
 ## Instructions
 * Click on a card
