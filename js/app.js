@@ -20,18 +20,18 @@ let matchedCard = document.getElementsByClassName("match");
 let starsList = document.querySelectorAll(".stars li");
 
 // declare variable of declare modal
-let modal = document.getElementById("popup")
-
-// declare variable of close icon in modal
-let closeicon = document.querySelector(".close");
+let modal = document.getElementById("popup");
 
 // declare variable of array for opened cards
 let openedCards = [];
 
+// Decalare variable of restart
+const restartButton = document.getElementById("restart");
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -51,7 +51,14 @@ document.body.onload = startGame();
 
 // function function to start a new play 
 function startGame() {
-
+    // Start timer when user clicks 
+    deck.onclick = function () {
+        this.onclick = null;
+        second = 0;
+        minute = 0;
+        hour = 0;
+        startTimer();
+    };
     // shuffle deck
     cards = shuffle(cards);
 
@@ -158,29 +165,25 @@ function enable() {
     });
 }
 
-
+// Declare varibale of rating stars
+var rating;
 // function count player's moves
 function moveCounter() {
     moves++;
     counter.innerHTML = moves;
-    //start timer on first click
-    if (moves == 1) {
-        second = 0;
-        minute = 0;
-        hour = 0;
-        startTimer();
-    }
     // setting rates based on moves
     if (moves > 8 && moves < 12) {
         for (i = 0; i < 3; i++) {
             if (i > 1) {
                 stars[i].style.visibility = "collapse";
+                rating = 2;
             }
         }
     } else if (moves > 13) {
         for (i = 0; i < 3; i++) {
             if (i > 0) {
                 stars[i].style.visibility = "collapse";
+                rating = 1;
             }
         }
     }
@@ -217,20 +220,41 @@ function congratulations() {
         finalTime = timer.innerHTML;
 
         // show congratulations modal
-        modal.classList.add("show");
-
-        // declare star rating variable
-        var starRating = document.querySelector(".stars").innerHTML;
-
-        //showing move, rating, time on modal
-        document.getElementById("finalMove").innerHTML = moves;
-        document.getElementById("starRating").innerHTML = starRating;
-        document.getElementById("totalTime").innerHTML = finalTime;
-
-        //closeicon on modal
-        closeModal();
+        swal({
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                title: 'Congratulations! You Won!',
+                text: 'With ' + moves + ' Moves and ' + rating + ' Stars in ' + finalTime,
+                type: 'success',
+                confirmButtonColor: '#12ed09',
+                confirmButtonText: 'Play again!'
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    startGame()
+                }
+            })
     };
 }
+
+// Restart Button
+restartButton.addEventListener('click', function () {
+    swal({
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        title: 'Are you sure?',
+        text: "Your progress will be Lost!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#12ed09',
+        cancelButtonColor: '#de1010',
+        confirmButtonText: 'Yes, Restart Game!'
+    }, function (isConfirm) {
+        if (isConfirm) {
+            startGame()
+        }
+    })
+});
 
 // loop to add event listeners to each card
 for (i = 0; i < cards.length; i++) {
@@ -239,16 +263,3 @@ for (i = 0; i < cards.length; i++) {
     card.addEventListener("click", cardOpen);
     card.addEventListener("click", congratulations);
 };
-
-// function for user to play Again  with reset
-function playAgain() {
-    modal.classList.remove("show");
-    startGame();
-}
-
-// function close icon on modal without reset
-function closeModal() {
-    closeicon.addEventListener("click", function () {
-        modal.classList.remove("show");
-    });
-}
