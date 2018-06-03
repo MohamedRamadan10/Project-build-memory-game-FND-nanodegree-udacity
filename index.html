@@ -1,136 +1,143 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <!-- specifies the character encoding for the HTML document -->
-    <meta charset="UTF-8">
-    <!-- varies with the device, and will be smaller on a mobile phone than on a computer screen. -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
     <!-- Title -->
-    <title>Classic Acrade Game</title>
+    <title>Memory Game</title>
     <!-- game Description -->
     <meta name="description" content="This is a simple game built. There's a deck of cards with different icons.........etc ">
-    <!-- Font Google -->
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Image Favicon -->
-    <link rel="shortcut icon" type="images/x-icon" href="images/favicon.png">
+    <!-- varies with the device, and will be smaller on a mobile phone than on a computer screen. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font awesome icons -->
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <!-- app CSS -->
+    <link rel="stylesheet" href="css/app.css">
 </head>
 
 <body>
-    <!-- Loader -->
-    <div id="loader">
-        <div class="loader">Loading...</div>
-    </div>
 
-    <!-- The Modal -->
-    <div id="chars">
-        <div class="info">
+    <div class="container">
+       <!-- Heading  -->
+        <header>
+            <h1>Memory Game</h1>
+        </header>
 
-            <!-- Headind -->
-            <h1>Classic Acrad Game</h1>
-
-            <!-- Heading -->
-            <h2>Choose your character</h2>
-
-            <!-- Choose Character -->
-            <ul onclick="character(event)">
-                <li><img src="images/char-boy.png" alt="char-boy" class="active"></li>
-                <li><img src="images/char-cat-girl.png" alt="char-cat-girl"></li>
-                <li><img src="images/char-horn-girl.png" alt="char-horn-girl"></li>
-                <li><img src="images/char-pink-girl.png" alt="char-pink-girl"></li>
-                <li><img src="images/char-princess-girl.png" alt="char-princess-girl"></li>
+        <!-- Score panel of stars, number of moves and timers -->
+        <div class="score-panel">
+           <!-- Stars icons -->
+            <ul class="stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
             </ul>
+            
+            <!-- Number of moves -->
+            <span class="moves">0</span> Move(s)
 
-            <!-- Start Game -->
-            <div id="start-game">
-                <!-- Click to start game -->
-                <a class="start-game" onclick="startGame()">Start Game</a>
+            <!-- Timers -->
+            <div class="timer"></div>
+
+           <!-- Button restart the memory game (restart moves, timers and stars) -->
+            <div class="restart" onclick=startGame()>
+                <i class="fa fa-repeat"></i>
             </div>
-
         </div>
-    </div>
-
-    <!-- Game Area (Canvas) -->
-    <div class="game-area">
-        <div class="game-stats">
-
-            <!-- Hearts -->
-            <div class="game-stats-hearts">
-                <img src="images/Heart.png" alt="heart">
-                <img src="images/Heart.png" alt="heart">
-                <img src="images/Heart.png" alt="heart">
-            </div>
-
-            <!-- Timer -->
-            <div class="game-stats-timer">
-                <img src="images/Timer.png" alt="timer">
-                <span class="game-stats-value">
-                <label class="game-stats-minutes">00</label>:<label class="game-stats-seconds">00</label>
-                </span>
-            </div>
-
-            <!-- Gems -->
-            <div class="game-stats-gems">
-                <img src="images/gem-pixel.png" alt="gem-pixel">
-                <span class="game-stats-value game-stats-gem-count">00/50</span>
-            </div>
-
-            <!-- Reset -->
-            <div class="reset">
-                <!-- Click to reset game -->
-                <span onclick="resetGame()">
-                 <i class="fa fa-2x fa-refresh"></i>
-            </span>
-            </div>
-
-            <!-- Instructions -->
-            <div class="modal">
-                <!-- Modal instructions of how playing game -->
-                <input id="modal-trigger" type="checkbox" />
-                <label for="modal-trigger">
-                <!-- Click to pause game -->
-                <i class="fa fa-2x fa-info" onclick="pauseGame()"></i>
-            </label>
-
-                <div class="modal-overlay">
-                    <div class="modal-wrap">
-                        <label for="modal-trigger">
-                        <!-- Click to start game -->
-                        <i class="fa fa-remove" onclick="startGame()"></i>
-                    </label>
-                        <!-- instruction image -->
-                        <img class="info-screen" src="images/start-screen.png" alt="instructions">
-                    </div>
+        
+        <!-- Cards icons -->
+        <ul class="deck" id="card-deck">
+           
+            <li class="card" data-name="diamond">
+                <i class="fa fa-diamond"></i>
+            </li>
+            
+            <li class="card" data-name="plane">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            
+            <li class="card" data-name="anchor">
+                <i class="fa fa-anchor"></i>
+            </li>
+            
+            <li class="card" data-name="bolt">
+                <i class="fa fa-bolt"></i>
+            </li>
+            
+            <li class="card" data-name="cube">
+                <i class="fa fa-cube"></i>
+            </li>
+            
+            <li class="card" data-name="anchor">
+                <i class="fa fa-anchor"></i>
+            </li>
+            
+            <li class="card" data-name="leaf">
+                <i class="fa fa-leaf"></i>
+            </li>
+            
+            <li class="card" data-name="bicycle">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            
+            <li class="card" data-name="diamond">
+                <i class="fa fa-diamond"></i>
+            </li>
+            
+            <li class="card" data-name="bomb">
+                <i class="fa fa-bomb"></i>
+            </li>
+            
+            <li class="card" data-name="leaf">
+                <i class="fa fa-leaf"></i>
+            </li>
+            
+            <li class="card" data-name="bomb">
+                <i class="fa fa-bomb"></i>
+            </li>
+            
+            <li class="card" data-name="bolt">
+                <i class="fa fa-bolt"></i>
+            </li>
+            
+            <li class="card" data-name="bicycle">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            
+            <li class="card" data-name="plane">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            
+            <li class="card" data-name="cube">
+                <i class="fa fa-cube"></i>
+            </li>
+        </ul>
+        
+        <!-- Modal popup when game is finished -->
+        <div id="popup" class="overlay">
+            <div class="popup">
+                <!-- Hedaing -->
+                <h2>Congratulations</h2>
+                <!-- Cloes modal -->
+                <a class="close" href=#>×</a>
+                <!-- Content of number of moves, timers and stars -->
+                <div class="content">
+                    <p>You made <span id=finalMove> </span> moves </p>
+                    <p>in <span id=totalTime> </span> </p>
+                    <p>Rating: <span id=starRating></span></p>
                 </div>
+                <!-- Button play again -->
+                <button id="play-again" onclick="playAgain()">
+                    Play again 
+                </button>
             </div>
-
-            <!-- Gamepad controls -->
-            <div class="gamepad" onclick="controls()">
-                <!-- Click to show and hide controls -->
-                <i class="fa fa-gamepad fa-2x"></i>
-            </div>
-            <!-- Controls -->
-            <div class="arrow-key-container" id="controls" oncontextmenu="return false">
-                <div class="arrow-key up" onclick="return false;" id="up"></div><br>
-                <div class="arrow-key left" onclick="return false;" id="left"></div>
-                <div class="arrow-key down" onclick="return false;" id="down"></div>
-                <div class="arrow-key right" onclick="return false;" id="right"></div>
-            </div>
-
         </div>
     </div>
-
-
-    <!-- This is simply an image loading utility JS -->
-    <script src="js/resources.js"></script>
-    <!-- App JS -->
+    
+    <!-- app JS -->
     <script src="js/app.js"></script>
-    <!-- File provides the game loop functionality JS -->
-    <script src="js/engine.js"></script>
 </body>
 
 </html>

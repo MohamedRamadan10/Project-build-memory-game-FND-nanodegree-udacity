@@ -203,7 +203,7 @@ h1 {
 }
 
 .fa-star {
-    color: #ffd700;
+    color: #FFD700;
 }
 
 .timer {
@@ -212,19 +212,90 @@ h1 {
 }
 
 
-/* Sweet Alert */
+/*************************************
+ ** Styles for congratulations modal**
+ *************************************/
 
-.sweet-alert button {
-    -webkit-transition: background .3s ease-in-out;
-    transition: background .3s ease-in-out;
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    -webkit-transition: opacity 500ms;
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
 }
 
-.sweet-alert button.cancel {
-    background-color: #e2043b;
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
 }
 
-.sweet-alert button.cancel:hover {
-    background-color: #e31e4f;
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #ffffff;
+    -webkit-box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    width: 80%;
+    position: relative;
+    -webkit-transition: all 5s ease-in-out;
+    transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+    margin: 1em auto;
+    text-align: center;
+    color: #333;
+    color: #333;
+}
+
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    -webkit-transition: all 200ms;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.popup .close:hover {
+    color: #e2043b;
+}
+
+.popup .content {
+    max-height: 30%;
+    overflow: auto;
+    text-align: center;
+}
+
+.show {
+    visibility: visible !important;
+    opacity: 100 !important;
+}
+
+#starRating li {
+    display: inline-block;
+}
+
+#play-again {
+    background: #12ed09;
+    border: none;
+    padding: 1em 2em;
+    font-size: 1.2em;
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 
