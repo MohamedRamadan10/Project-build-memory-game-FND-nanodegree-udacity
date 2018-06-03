@@ -1,7 +1,7 @@
 # Clasic Arcade Game Clone
 ### Screenshots
 ---------------------------
-![Play Here](http://mohamed-ramadan.comeze.com/Project-classic-arcade-game-FND-nanodegree/index.html)
+* [Play Here](http://mohamed-ramadan.comeze.com/Project-classic-arcade-game-FND-nanodegree/index.html)
 ![Choose Character](images/choose-character.png)
 ![Area Game](images/area-game.png)
 ![Instructions](images/instructions.png)
